@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="850.0" maxWidth="1280.0" prefHeight="850.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fds.gui.views.FDSMainGUIController">
+   <children>
+      <SplitPane dividerPositions="0.13770053475935828" orientation="VERTICAL" prefHeight="750.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane fx:id="banner_panel" maxHeight="100.0" minHeight="100.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
+               <children>
+                  <ImageView fitHeight="83.0" fitWidth="152.0" layoutX="15.0" layoutY="7.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="7.0">
+                     <image>
+                        <Image url="@../resources/IAS-Logo.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="206.0" layoutY="37.0" text="FDS Main GUI" AnchorPane.leftAnchor="200.0">
+                     <font>
+                        <Font name="Droid Sans Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="1109.0" layoutY="53.0" mnemonicParsing="false" onAction="#open_running_log" prefHeight="30.0" prefWidth="150.0" text="Show Running Log" textAlignment="CENTER" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TabPane fx:id="mainTabPane" prefHeight="370.0" prefWidth="1348.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <tabs>
+                        <Tab text="Control Panel">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox prefHeight="757.0" prefWidth="1278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <VBox prefHeight="757.0" prefWidth="358.0">
+                                             <children>
+                                                <Label text="System Informations">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="53.0" top="20.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Button mnemonicParsing="false" onAction="#open_running_log" prefHeight="40.0" prefWidth="300.0" text="Running Log" textAlignment="CENTER">
+                                                   <VBox.margin>
+                                                      <Insets left="15.0" top="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#problem_diagnose" prefHeight="40.0" prefWidth="300.0" text="Problem Diagnose" textAlignment="CENTER">
+                                                   <VBox.margin>
+                                                      <Insets left="15.0" top="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#system_info" prefHeight="40.0" prefWidth="300.0" text="System Information">
+                                                   <VBox.margin>
+                                                      <Insets left="15.0" top="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#system_graphic" prefHeight="40.0" prefWidth="300.0" text="System Graphic">
+                                                   <VBox.margin>
+                                                      <Insets left="15.0" top="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#ats_model" prefHeight="40.0" prefWidth="300.0" text="ATS-Model">
+                                                   <VBox.margin>
+                                                      <Insets left="15.0" top="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#database_handler" prefHeight="40.0" prefWidth="300.0" text="Database Handler">
+                                                   <VBox.margin>
+                                                      <Insets left="15.0" top="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#demonstration" prefHeight="40.0" prefWidth="300.0" text="Demonstration">
+                                                   <VBox.margin>
+                                                      <Insets left="15.0" top="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                             </padding>
+                                          </VBox>
+                                          <VBox fx:id="system_controll_vbox" prefHeight="757.0" prefWidth="359.0">
+                                             <children>
+                                                <Label text="System Controll">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="75.0" top="20.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Button mnemonicParsing="false" onAction="#reset_database" prefHeight="40.0" prefWidth="300.0" text="Reset Database" textAlignment="CENTER">
+                                                   <VBox.margin>
+                                                      <Insets top="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#check_faults" prefHeight="40.0" prefWidth="300.0" text="Check Faults" textAlignment="CENTER">
+                                                   <VBox.margin>
+                                                      <Insets top="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#detected_faults" prefHeight="40.0" prefWidth="300.0" text="Detected Faults" textAlignment="CENTER">
+                                                   <VBox.margin>
+                                                      <Insets top="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#load_data" prefHeight="40.0" prefWidth="300.0" text="Load Anlage Data" textAlignment="CENTER">
+                                                   <VBox.margin>
+                                                      <Insets top="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#load_framework_file" prefHeight="40.0" prefWidth="300.0" text="Load Framework File">
+                                                   <VBox.margin>
+                                                      <Insets top="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#export_framework_file" prefHeight="40.0" prefWidth="300.0" text="Export Framework File">
+                                                   <VBox.margin>
+                                                      <Insets top="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                             </padding></VBox>
+                                          <Pane prefHeight="707.0" prefWidth="561.0">
+                                             <children>
+                                                <ImageView fx:id="anlage_img" fitHeight="609.0" fitWidth="451.0" layoutX="45.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../resources/anlage.jpg" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="285.0" layoutY="662.0" text="Copyright @ 2016 &amp; Version 2.0" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab text="Problem Diagnose">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TabPane fx:id="problem_diagnose_TabPane" prefHeight="757.0" prefWidth="1278.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <tabs>
+                                        <Tab text="Setpoint Value">
+                                             <content>
+                                                <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                                   <content>
+                                                  <AnchorPane fx:id="setpoint_panel" />
+                                                   </content>
+                                                </ScrollPane>
+                                             </content>
+                                        </Tab>
+                                        <Tab text="Symptoms">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <ScrollPane prefHeight="757.0" prefWidth="1245.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <content>
+                                                          <AnchorPane fx:id="symptoms_panel" />
+                                                        </content>
+                                                      </ScrollPane>
+                                                   </children></AnchorPane>
+                                          </content>
+                                        </Tab>
+                                          <Tab text="Detected Faults">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <SplitPane dividerPositions="0.5" prefHeight="707.0" prefWidth="1245.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <items>
+                                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <TableView fx:id="knownFaultTable" layoutY="51.0" prefHeight="654.0" prefWidth="618.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                                    <columns>
+                                                                      <TableColumn fx:id="knownFaultID" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Fault ID" />
+                                                                      <TableColumn fx:id="knownFaultType" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Fault Type" />
+                                                                        <TableColumn fx:id="knownFaultDesc" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Fault Description" />
+                                                                        <TableColumn fx:id="knownSolution" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Solution" />
+                                                                    </columns>
+                                                                  </TableView>
+                                                                  <Label layoutX="14.0" layoutY="14.0" text="Known Faults" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+                                                                     <font>
+                                                                        <Font size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                               </children>
+                                                            </AnchorPane>
+                                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <TableView fx:id="unknownFaultTable" layoutY="50.0" prefHeight="655.0" prefWidth="617.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                                    <columns>
+                                                                      <TableColumn fx:id="unknownFaultID" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Fault ID" />
+                                                                      <TableColumn fx:id="unknownFaultType" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Fault Type" />
+                                                                        <TableColumn fx:id="unknownFaultDesc" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Fault Description" />
+                                                                        <TableColumn fx:id="unknownSolution" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Solution" />
+                                                                    </columns>
+                                                                  </TableView>
+                                                                  <Label layoutX="24.0" layoutY="19.0" text="Unknown Faults" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+                                                                     <font>
+                                                                        <Font size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                               </children>
+                                                            </AnchorPane>
+                                                        </items>
+                                                      </SplitPane>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </Tab>
+                                      </tabs>
+                                    </TabPane>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab text="System Information">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TabPane prefHeight="757.0" prefWidth="1278.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <tabs>
+                                        <Tab text="System Information">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <ScrollPane prefHeight="757.0" prefWidth="1245.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <content>
+                                                            <AnchorPane fx:id="systeminfo_panel" />
+                                                         </content>
+                                                      </ScrollPane>
+                                                   </children>
+                                                </AnchorPane>
+                                          </content>
+                                        </Tab>
+                                        <Tab text="Functions Availability">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <ScrollPane prefHeight="757.0" prefWidth="1245.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <content>
+                                                          <AnchorPane fx:id="functions_availability_panel" />
+                                                        </content>
+                                                      </ScrollPane>
+                                                   </children></AnchorPane>
+                                          </content>
+                                        </Tab>
+                                          <Tab text="Components Availability">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <ScrollPane prefHeight="757.0" prefWidth="1245.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <content>
+                                                          <AnchorPane fx:id="components_availability_panel" />
+                                                        </content>
+                                                      </ScrollPane>
+                                                   </children></AnchorPane>
+                                            </content>
+                                          </Tab>
+                                      </tabs>
+                                    </TabPane>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                      <Tab text="System Graphic">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ScrollPane>
+                                      <content>
+                                        <AnchorPane fx:id="canvas_panel">
+                                             <children>
+                                                <Canvas fx:id="graphicCanvas" height="682.0" width="1251.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="ATS-Model">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TabPane prefHeight="757.0" prefWidth="1278.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <tabs>
+                                        <Tab text="Components Model">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <ScrollPane prefHeight="757.0" prefWidth="1245.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <content>
+                                                          <AnchorPane fx:id="components_model_panel" />
+                                                        </content>
+                                                      </ScrollPane>
+                                                   </children></AnchorPane>
+                                          </content>
+                                        </Tab>
+                                        <Tab text="Functions Model">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <ScrollPane prefHeight="707.0" prefWidth="1245.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <content>
+                                                          <AnchorPane fx:id="functions_model_panel" />
+                                                        </content>
+                                                      </ScrollPane>
+                                                   </children></AnchorPane>
+                                          </content>
+                                        </Tab>
+                                          <Tab text="Requirements Model">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <ScrollPane prefHeight="707.0" prefWidth="1245.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <content>
+                                                          <AnchorPane fx:id="requirements_model_panel" />
+                                                        </content>
+                                                      </ScrollPane>
+                                                   </children></AnchorPane>
+                                            </content>
+                                          </Tab>
+                                      </tabs>
+                                    </TabPane>
+                                 </children></AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Database Handler">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TabPane prefHeight="748.0" prefWidth="395.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <tabs>
+                                          <Tab text="Basic Components">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <TableView fx:id="componentTable" prefHeight="715.0" prefWidth="530.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <columns>
+                                                            <TableColumn fx:id="componentIdColumn" text="Component ID" />
+                                                            <TableColumn fx:id="componentNameColumn" text="Component Name" />
+                                                            <TableColumn fx:id="seriesColumn" text="Series" />
+                                                            <TableColumn fx:id="typeColumn" text="Type" />
+                                                            <TableColumn fx:id="componentSymbolColumn" prefWidth="75.0" text="Component Symbol" />
+                                                            <TableColumn fx:id="componentDescColumn" text="Component Description" />
+                                                            <TableColumn fx:id="activitionColumn" text="Activition" />
+                                                            <TableColumn fx:id="componentStatusColumn" text="Status" />
+                                                            <TableColumn fx:id="componentDateColumn" text="Date" />
+                                                         </columns>
+                                                      </TableView>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </Tab>
+                                        <Tab text="Basic Functions">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <TableView fx:id="functionTable" prefHeight="715.0" prefWidth="530.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <columns>
+                                                            <TableColumn fx:id="functionIdColumn" text="Function ID" />
+                                                            <TableColumn fx:id="functionDescColumn" text="Function Description" />
+                                                            <TableColumn fx:id="functionStatusColumn" text="Status" />
+                                                            <TableColumn fx:id="functionDateColumn" text="Date" />
+                                                         </columns>
+                                                      </TableView>
+                                                   </children>
+                                                </AnchorPane>
+                                          </content>
+                                        </Tab>
+                                          <Tab text="Sub Functions">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <TableView fx:id="subfunctionTable" prefHeight="715.0" prefWidth="530.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <columns>
+                                                            <TableColumn fx:id="subfunctionIdColumn" text="Sub Function ID" />
+                                                            <TableColumn fx:id="subfunctionDescColumn" text="Sub Function Description" />
+                                                            <TableColumn fx:id="subfunctionStatusColumn" text="Status" />
+                                                            <TableColumn fx:id="subfunctionDateColumn" text="Date" />
+                                                         </columns>
+                                                      </TableView>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </Tab>
+                                          <Tab text="Sub Systems">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <TableView fx:id="subsystemTable" prefHeight="715.0" prefWidth="530.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <columns>
+                                                            <TableColumn fx:id="subsystemIdColumn" text="Sub System ID" />
+                                                            <TableColumn fx:id="subsystemDescColumn" text="Sub System Description" />
+                                                            <TableColumn fx:id="subsystemStatusColumn" text="Status" />
+                                                            <TableColumn fx:id="subsystemDateColumn" text="Date" />
+                                                         </columns>
+                                                      </TableView>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </Tab>
+                                          <Tab text="Main Functions">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <TableView fx:id="mainfunctionTable" prefHeight="715.0" prefWidth="530.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <columns>
+                                                            <TableColumn fx:id="mainfunctionIdColumn" text="Main Function ID" />
+                                                            <TableColumn fx:id="mainfunctionDescColumn" text="Main Function Description" />
+                                                            <TableColumn fx:id="mainfunctionStatusColumn" text="Status" />
+                                                            <TableColumn fx:id="mainfunctionDateColumn" text="Date" />
+                                                         </columns>
+                                                      </TableView>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </Tab>
+                                        <Tab text="Faults">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <TableView fx:id="faultTable" prefHeight="724.0" prefWidth="1278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <columns>
+                                                          <TableColumn fx:id="faultIdColumn" text="Fault ID" />
+                                                            <TableColumn fx:id="faultcomponentIdColumn" text="Component ID" />
+                                                            <TableColumn fx:id="faultTypeColumn" text="Fault Type" />
+                                                            <TableColumn fx:id="faultDescColumn" text="Fault Description" />
+                                                            <TableColumn fx:id="executeCommandColumn" editable="false" text="Execution" />
+                                                          <TableColumn fx:id="insertDateColumn" text="Date" />
+                                                        </columns>
+                                                      </TableView>
+                                                   </children>
+                                                </AnchorPane>
+                                          </content>
+                                        </Tab>
+                                          <Tab text="Symptoms">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <TableView fx:id="symptomTable" prefHeight="724.0" prefWidth="1278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <columns>
+                                                            <TableColumn fx:id="symptomIDColumn" prefWidth="120.0" text="Symptom ID" />
+                                                            <TableColumn fx:id="componentIDColumn" prefWidth="140.0" text="Component ID" />
+                                                            <TableColumn fx:id="descriptionColumn" prefWidth="545.0" text="Description" />
+                                                            <TableColumn fx:id="minLimitColumn" minWidth="0.0" prefWidth="68.0" text="Min Limit" />
+                                                            <TableColumn fx:id="maxLimitColumn" minWidth="0.0" prefWidth="77.0" text="Max Limit" />
+                                                         </columns>
+                                                      </TableView>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                      </tabs>
+                                    </TabPane>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Demonstration">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ScrollPane prefHeight="707.0" prefWidth="1278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <content>
+                                        <AnchorPane fx:id="demonstration_panel" />
+                                      </content>
+                                    </ScrollPane>
+                                 </children></AnchorPane>
+                          </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
