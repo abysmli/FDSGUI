@@ -75,7 +75,7 @@ public class FaultDiagnoseController {
 	public void update() {
 		try {
 			mSymptoms = FDSRequester.getSymptoms();
-			componentValueContainer = FDSRequester.getLastComponentValue();
+			componentValueContainer = FDSRequester.getLastRuntimeData();
 			mFaultProcedureInfos = FDSRequester.getFaultProcedureInfos();
 			currentProcess = componentValueContainer.getInt("process_id");
 			timestamp = Long.valueOf(componentValueContainer.getString("stamp_time"));
@@ -108,7 +108,7 @@ public class FaultDiagnoseController {
 
 	public void loadData() {
 		try {
-			JSONArray metaComponentValue = FDSRequester.getComponentValue();
+			JSONArray metaComponentValue = FDSRequester.getRuntimeData();
 			for (int i = 0; i < metaComponentValue.length(); i++) {
 				componentValueContainer = metaComponentValue.getJSONObject(i);
 				currentProcess = componentValueContainer.getInt("process_id");

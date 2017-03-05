@@ -145,16 +145,16 @@ public class FRSHttpRequestHandler {
 		return finalResult;
 	}
 
-	public JSONObject getLastComponentValue() throws Exception {
-		String url = "http://" + sURL + "/getLastComponentValue";
+	public JSONObject getLastRuntimeData() throws Exception {
+		String url = "http://" + sURL + "/getLastRuntimeData";
 		List<NameValuePair> urlParameters = new ArrayList<>();
 		StringBuilder content = sendPostRequest(url, urlParameters);
 		JSONObject finalResult = new JSONObject(content.toString());
 		return finalResult;
 	}
 	
-	public JSONArray getComponentValue() throws Exception {
-		String url = "http://" + sURL + "/getComponentValue";
+	public JSONArray getRuntimeData() throws Exception {
+		String url = "http://" + sURL + "/getRuntimeData";
 		List<NameValuePair> urlParameters = new ArrayList<>();
 		StringBuilder content = sendPostRequest(url, urlParameters);
 		JSONArray finalResult = new JSONArray(content.toString());
