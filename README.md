@@ -1,3 +1,3 @@
-# FDSGUI
-The GUI for FDS Server. It is a GUI for displaying the status of FDS Server.
-See more in: FDSServer Project
+# FRSGUI
+The GUI for FRS Server. It is a GUI for displaying the status of FRS Server.
+See more in: FRSServer Project
