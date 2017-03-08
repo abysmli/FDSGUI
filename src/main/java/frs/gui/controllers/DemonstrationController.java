@@ -1,5 +1,6 @@
 package frs.gui.controllers;
 
+import frs.gui.logics.FaultDiagnoseController;
 import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;

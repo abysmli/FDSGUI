@@ -30,125 +30,125 @@ import javafx.scene.layout.AnchorPane;
 
 public class FRSCenterController {
 
-	private FRSHttpRequestHandler http = new FRSHttpRequestHandler(FRSGUISetting.FDSAddress);
+    private FRSHttpRequestHandler http = new FRSHttpRequestHandler(FRSGUISetting.FDSAddress);
 
-	private GraphicViewController graphic;
-	private ComponentModelViewController componentModel;
-	private DatabaseTableViewController modelTable;
-	private FunctionsAvailabilityViewController functionAvailability;
-	private ComponentsAvailabilityViewController componentAvailability;
-	
-	Timer timer = new Timer();
-	JSONObject mAllDataTable = new JSONObject();
+    private GraphicViewController graphic;
+    private ComponentModelViewController componentModel;
+    private DatabaseTableViewController modelTable;
+    private FunctionsAvailabilityViewController functionAvailability;
+    private ComponentsAvailabilityViewController componentAvailability;
 
-	public FRSCenterController(FRSMainGUIController fds_gui, Canvas graphic_canvas, AnchorPane canvas_panel,
-			AnchorPane components_model_panel, AnchorPane functions_model_panel, AnchorPane requirements_model_panel,
-			AnchorPane functions_availability_panel, AnchorPane components_availability_panel,
-			ObservableList<Fault_List> faultData, ObservableList<Function_List> functionData,
-			ObservableList<Subfunction_List> subfunctionData, ObservableList<Mainfunction_List> mainfunctionData,
-			ObservableList<Component_List> componentData, ObservableList<Subsystem_List> subsystemData) {
+    Timer timer = new Timer();
+    JSONObject mAllDataTable = new JSONObject();
 
-		graphic = new GraphicViewController(canvas_panel, graphic_canvas, mAllDataTable);
-		componentModel = new ComponentModelViewController(components_model_panel, mAllDataTable);
-		modelTable = new DatabaseTableViewController(faultData, functionData, subfunctionData, mainfunctionData,
-				componentData, subsystemData, mAllDataTable);
-		functionAvailability = new FunctionsAvailabilityViewController(functions_availability_panel, mAllDataTable);
-		componentAvailability = new ComponentsAvailabilityViewController(components_availability_panel, mAllDataTable);
-		update();
-	}
+    public FRSCenterController(FRSMainGUIController fds_gui, Canvas graphic_canvas, AnchorPane canvas_panel,
+            AnchorPane components_model_panel, AnchorPane functions_model_panel, AnchorPane requirements_model_panel,
+            AnchorPane functions_availability_panel, AnchorPane components_availability_panel,
+            ObservableList<Fault_List> faultData, ObservableList<Function_List> functionData,
+            ObservableList<Subfunction_List> subfunctionData, ObservableList<Mainfunction_List> mainfunctionData,
+            ObservableList<Component_List> componentData, ObservableList<Subsystem_List> subsystemData) {
 
-	public void start() {
-		timer = new Timer();
-		timer.scheduleAtFixedRate(new TimerTask() {
-			@Override
-			public void run() {
-				
-			}
-		}, 0, 3000);
-	}
-	
-	public void stop() {
-		timer.cancel();
-		timer.purge();
-	}
-	
-	private void update() {
-		try {
-			getAllDataTables();
-			modelTable.refresh();
-			graphic.draw();
-			componentModel.draw();
-			functionAvailability.refresh();
-			componentAvailability.refresh();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+        graphic = new GraphicViewController(canvas_panel, graphic_canvas, mAllDataTable);
+        componentModel = new ComponentModelViewController(components_model_panel, mAllDataTable);
+        modelTable = new DatabaseTableViewController(faultData, functionData, subfunctionData, mainfunctionData,
+                componentData, subsystemData, mAllDataTable);
+        functionAvailability = new FunctionsAvailabilityViewController(functions_availability_panel, mAllDataTable);
+        componentAvailability = new ComponentsAvailabilityViewController(components_availability_panel, mAllDataTable);
+        update();
+    }
 
-	private void getAllDataTables() throws JSONException, Exception {
-		mAllDataTable.put("Faults", getFaults());
-		mAllDataTable.put("Functions", getFunctions());
-		mAllDataTable.put("Components", getComponents());
-		mAllDataTable.put("Subsystems", getSubsystems());
-		mAllDataTable.put("Subfunctions", getSubfunctions());
-		mAllDataTable.put("Mainfunctions", getMainfunctions());
-		mAllDataTable.put("SubsystemComponentRel", getSubsystemComponentRel());
-		mAllDataTable.put("ComponentFunctionRel", getComponentFunctionRel());
-		mAllDataTable.put("SubfunctionFunctionRel", getSubfunctionFunctionRel());
-		mAllDataTable.put("MainfunctionSubfunctionRel", getMainfunctionSubfunctionRel());
-	}
+    public void start() {
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
 
-	private JSONArray getSubsystemComponentRel() throws Exception {
-		return http.getSubsystemComponentRel();
-	}
+            }
+        }, 0, 3000);
+    }
 
-	private JSONArray getComponentFunctionRel() throws Exception {
-		return http.getComponentFunctionRel();
-	}
+    public void stop() {
+        timer.cancel();
+        timer.purge();
+    }
 
-	private JSONArray getSubfunctionFunctionRel() throws Exception {
-		return http.getSubfunctionFunctionRel();
-	}
+    private void update() {
+        try {
+            getAllDataTables();
+            modelTable.refresh();
+            graphic.draw();
+            componentModel.draw();
+            functionAvailability.refresh();
+            componentAvailability.refresh();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	private JSONArray getMainfunctionSubfunctionRel() throws Exception {
-		return http.getMainfunctionSubfunctionRel();
-	}
+    private void getAllDataTables() throws JSONException, Exception {
+        mAllDataTable.put("Faults", getFaults());
+        mAllDataTable.put("Functions", getFunctions());
+        mAllDataTable.put("Components", getComponents());
+        mAllDataTable.put("Subsystems", getSubsystems());
+        mAllDataTable.put("Subfunctions", getSubfunctions());
+        mAllDataTable.put("Mainfunctions", getMainfunctions());
+        mAllDataTable.put("SubsystemComponentRel", getSubsystemComponentRel());
+        mAllDataTable.put("ComponentFunctionRel", getComponentFunctionRel());
+        mAllDataTable.put("SubfunctionFunctionRel", getSubfunctionFunctionRel());
+        mAllDataTable.put("MainfunctionSubfunctionRel", getMainfunctionSubfunctionRel());
+    }
 
-	private JSONArray getMainfunctions() throws Exception {
-		return http.getMainfunctions();
-	}
+    private JSONArray getSubsystemComponentRel() throws Exception {
+        return http.getSubsystemComponentRel();
+    }
 
-	private JSONArray getSubsystems() throws Exception {
-		return http.getSubsystems();
-	}
+    private JSONArray getComponentFunctionRel() throws Exception {
+        return http.getComponentFunctionRel();
+    }
 
-	private JSONArray getComponents() throws Exception {
-		return http.getComponents();
-	}
+    private JSONArray getSubfunctionFunctionRel() throws Exception {
+        return http.getSubfunctionFunctionRel();
+    }
 
-	private JSONArray getFunctions() throws Exception {
-		return http.getFunctions();
-	}
+    private JSONArray getMainfunctionSubfunctionRel() throws Exception {
+        return http.getMainfunctionSubfunctionRel();
+    }
 
-	private JSONArray getSubfunctions() throws Exception {
-		return http.getSubfunctions();
-	}
+    private JSONArray getMainfunctions() throws Exception {
+        return http.getMainfunctions();
+    }
 
-	private JSONArray getFaults() throws Exception {
-		return http.getFaults();
-	}
+    private JSONArray getSubsystems() throws Exception {
+        return http.getSubsystems();
+    }
 
-	public void resetDatabase() {
-		try {
-			JSONObject result = http.resetDatabase();
-			if (result.getString("result").equals("success")) {
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Reset Database");
-				alert.setHeaderText("Database has been reset!");
-				alert.showAndWait();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    private JSONArray getComponents() throws Exception {
+        return http.getComponents();
+    }
+
+    private JSONArray getFunctions() throws Exception {
+        return http.getFunctions();
+    }
+
+    private JSONArray getSubfunctions() throws Exception {
+        return http.getSubfunctions();
+    }
+
+    private JSONArray getFaults() throws Exception {
+        return http.getFaults();
+    }
+
+    public void resetDatabase() {
+        try {
+            JSONObject result = http.resetDatabase();
+            if (result.getString("result").equals("success")) {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Reset Database");
+                alert.setHeaderText("Database has been reset!");
+                alert.showAndWait();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

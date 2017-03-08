@@ -1,7 +1,7 @@
 package frs.gui.views;
 
 import frs.gui.logics.FRSCenterController;
-import frs.gui.controllers.FaultDiagnoseController;
+import frs.gui.logics.FaultDiagnoseController;
 import frs.gui.MainApp;
 import frs.gui.models.Component_List;
 import frs.gui.models.Fault_List;

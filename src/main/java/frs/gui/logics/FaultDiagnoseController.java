@@ -1,4 +1,4 @@
-package frs.gui.controllers;
+package frs.gui.logics;
 
 import frs.gui.FRSGUISetting;
 import frs.gui.FRSHttpRequestHandler;

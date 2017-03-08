@@ -34,7 +34,7 @@ public class SystemInfoViewController {
 		this.systeminfo_panel = systeminfo_panel;
 	}
 
-	void refresh(JSONArray allAbfComponents, int process_id) {
+	public void refresh(JSONArray allAbfComponents, int process_id) {
 
 		if (firstRunFlag) {
 			grid.setPadding(new Insets(30, 30, 30, 30));
