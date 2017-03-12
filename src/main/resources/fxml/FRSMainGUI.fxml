@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="850.0" maxWidth="1280.0" prefHeight="850.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frs.gui.views.FRSMainGUIController">
+<AnchorPane maxHeight="850.0" maxWidth="1280.0" prefHeight="850.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frs.gui.views.FRSMainGUIController">
    <children>
       <SplitPane dividerPositions="0.13770053475935828" orientation="VERTICAL" prefHeight="750.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -171,18 +171,6 @@
                                                    </content>
                                                 </ScrollPane>
                                              </content>
-                                        </Tab>
-                                        <Tab text="Symptoms">
-                                          <content>
-                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                   <children>
-                                                      <ScrollPane prefHeight="757.0" prefWidth="1245.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                        <content>
-                                                          <AnchorPane fx:id="symptoms_panel" />
-                                                        </content>
-                                                      </ScrollPane>
-                                                   </children></AnchorPane>
-                                          </content>
                                         </Tab>
                                           <Tab text="Detected Faults">
                                             <content>
@@ -447,10 +435,12 @@
                                                       <TableView fx:id="faultTable" prefHeight="724.0" prefWidth="1278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                         <columns>
                                                           <TableColumn fx:id="faultIdColumn" text="Fault ID" />
-                                                            <TableColumn fx:id="faultcomponentIdColumn" text="Component ID" />
-                                                            <TableColumn fx:id="faultTypeColumn" text="Fault Type" />
-                                                            <TableColumn fx:id="faultDescColumn" text="Fault Description" />
-                                                            <TableColumn fx:id="executeCommandColumn" editable="false" text="Execution" />
+                                                            <TableColumn fx:id="faultNrColumn" text="Fault Number" />
+                                                            <TableColumn fx:id="faultNameColumn" text="Fault Name" />
+                                                            <TableColumn fx:id="faultParameterColumn" text="Fault Parameter" />
+                                                            <TableColumn fx:id="faultLocationColumn" text="Fault Location" />
+                                                            <TableColumn fx:id="symptomDescColumn" prefWidth="75.0" text="Symptom" />
+                                                            <TableColumn fx:id="reconfCommandColumn" prefWidth="75.0" text="Command" />
                                                           <TableColumn fx:id="insertDateColumn" text="Date" />
                                                         </columns>
                                                       </TableView>
@@ -458,23 +448,6 @@
                                                 </AnchorPane>
                                           </content>
                                         </Tab>
-                                          <Tab text="Symptoms">
-                                             <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                   <children>
-                                                      <TableView fx:id="symptomTable" prefHeight="724.0" prefWidth="1278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                         <columns>
-                                                            <TableColumn fx:id="symptomIDColumn" prefWidth="120.0" text="Symptom ID" />
-                                                            <TableColumn fx:id="componentIDColumn" prefWidth="140.0" text="Component ID" />
-                                                            <TableColumn fx:id="descriptionColumn" prefWidth="545.0" text="Description" />
-                                                            <TableColumn fx:id="minLimitColumn" minWidth="0.0" prefWidth="68.0" text="Min Limit" />
-                                                            <TableColumn fx:id="maxLimitColumn" minWidth="0.0" prefWidth="77.0" text="Max Limit" />
-                                                         </columns>
-                                                      </TableView>
-                                                   </children>
-                                                </AnchorPane>
-                                             </content>
-                                          </Tab>
                                       </tabs>
                                     </TabPane>
                                  </children>

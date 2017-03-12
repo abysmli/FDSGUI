@@ -57,8 +57,8 @@ public class FRSHttpRequestHandler {
 		JSONArray finalResult = new JSONArray();
 		for(int i = 0; i<result.length(); i++) {
 			JSONObject obj = result.getJSONObject(i);
-			JSONObject executeCommand = new JSONObject(obj.getString("execute_command"));
-			obj.put("execute_command", executeCommand);
+			JSONObject reconfCommand = new JSONObject(obj.getString("reconf_command"));
+			obj.put("reconf_command", reconfCommand);
 			finalResult.put(obj);
 		}
 		
@@ -161,8 +161,8 @@ public class FRSHttpRequestHandler {
 		return finalResult;
 	}
 	
-	public JSONArray getFaultProcedureInfos() throws Exception {
-		String url = "http://" + sURL + "/getFaultProcedureInfos";
+	public JSONArray getAnalysisProcedure() throws Exception {
+		String url = "http://" + sURL + "/getAnalysisProcedure";
 		List<NameValuePair> urlParameters = new ArrayList<>();
 		StringBuilder content = sendPostRequest(url, urlParameters);
 		JSONArray finalResult = new JSONArray(content.toString());

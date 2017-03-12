@@ -80,6 +80,7 @@ public class DemonstrationController {
 		animation_panel = new Pane();
 		animation_panel.setLayoutX(30);
 		animation_panel.setLayoutY(70);
+                animation_panel.setStyle("-fx-background-color: #795548;");
 		demonstration_panel.getChildren().add(animation_panel);
 	}
 

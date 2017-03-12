@@ -9,7 +9,6 @@ import frs.gui.models.Function_List;
 import frs.gui.models.Mainfunction_List;
 import frs.gui.models.Subfunction_List;
 import frs.gui.models.Subsystem_List;
-import frs.gui.models.Symptom_List;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -138,34 +137,19 @@ public class FRSMainGUIController implements Initializable {
 	private TableView<Fault_List> faultTable;
 
 	@FXML
-	private TableColumn<Fault_List, Integer> faultIdColumn, faultcomponentIdColumn;
+	private TableColumn<Fault_List, Integer> faultIdColumn, faultNrColumn;
 
 	@FXML
-	private TableColumn<Fault_List, String> faultTypeColumn, faultDescColumn, insertDateColumn;
+	private TableColumn<Fault_List, String> faultNameColumn, faultParameterColumn, faultLocationColumn, symptomDescColumn, insertDateColumn;
 
 	@FXML
-	private TableColumn<Fault_List, Object> executeCommandColumn;
+	private TableColumn<Fault_List, Object> reconfCommandColumn;
 
 	private final ObservableList<Fault_List> faultData = FXCollections.observableArrayList();
 
-	/* ----------------- symptomTable -------------------- */
-	@FXML
-	private TableView<Symptom_List> symptomTable;
-
-	@FXML
-	private TableColumn<Symptom_List, Integer> symptomIDColumn, componentIDColumn;
-
-	@FXML
-	private TableColumn<Symptom_List, String> descriptionColumn;
-
-	@FXML
-	private TableColumn<Symptom_List, Double> minLimitColumn, maxLimitColumn;
-
-	private final ObservableList<Symptom_List> symptomData = FXCollections.observableArrayList();
-
 	/* ----------------- Panels -------------------- */
 	@FXML
-	private AnchorPane setpoint_panel, symptoms_panel;
+	private AnchorPane setpoint_panel;
 
 	@FXML
 	private AnchorPane systeminfo_panel, functions_availability_panel, components_availability_panel;
@@ -216,7 +200,7 @@ public class FRSMainGUIController implements Initializable {
 				componentData, subsystemData);
 
 		problemDiagnoseController = new FaultDiagnoseController(this, setpoint_panel, systeminfo_panel,
-				symptoms_panel, demonstration_panel, symptomData);
+				demonstration_panel);
 	}
 
 	private void initModelTables() {
@@ -226,16 +210,17 @@ public class FRSMainGUIController implements Initializable {
 		initFunctionModelTable();
 		initSubFunctionModelTable();
 		initFaultTable();
-		initSymptomTable();
 	}
 
 	private void initFaultTable() {
 		faultTable.setEditable(false);
 		faultIdColumn.setCellValueFactory(new PropertyValueFactory<Fault_List, Integer>("faultId"));
-		faultcomponentIdColumn.setCellValueFactory(new PropertyValueFactory<Fault_List, Integer>("componentId"));
-		faultTypeColumn.setCellValueFactory(new PropertyValueFactory<Fault_List, String>("faultType"));
-		faultDescColumn.setCellValueFactory(new PropertyValueFactory<Fault_List, String>("faultDesc"));
-		executeCommandColumn.setCellValueFactory(new PropertyValueFactory<Fault_List, Object>("executeCommand"));
+		faultNrColumn.setCellValueFactory(new PropertyValueFactory<Fault_List, Integer>("faultNr"));
+		faultNameColumn.setCellValueFactory(new PropertyValueFactory<Fault_List, String>("faultName"));
+		faultParameterColumn.setCellValueFactory(new PropertyValueFactory<Fault_List, String>("faultParameter"));
+		faultLocationColumn.setCellValueFactory(new PropertyValueFactory<Fault_List, String>("faultLocation"));
+		symptomDescColumn.setCellValueFactory(new PropertyValueFactory<Fault_List, String>("symptomDesc"));
+		reconfCommandColumn.setCellValueFactory(new PropertyValueFactory<Fault_List, Object>("reconfCommand"));
 		insertDateColumn.setCellValueFactory(new PropertyValueFactory<Fault_List, String>("insertDate"));
 		faultTable.setItems(faultData);
 	}
@@ -295,16 +280,6 @@ public class FRSMainGUIController implements Initializable {
 		mainfunctionDateColumn
 				.setCellValueFactory(new PropertyValueFactory<Mainfunction_List, String>("mainfunctionDate"));
 		mainfunctionTable.setItems(mainfunctionData);
-	}
-
-	private void initSymptomTable() {
-		symptomTable.setEditable(false);
-		symptomIDColumn.setCellValueFactory(new PropertyValueFactory<Symptom_List, Integer>("symptomId"));
-		componentIDColumn.setCellValueFactory(new PropertyValueFactory<Symptom_List, Integer>("componentId"));
-		descriptionColumn.setCellValueFactory(new PropertyValueFactory<Symptom_List, String>("description"));
-		minLimitColumn.setCellValueFactory(new PropertyValueFactory<Symptom_List, Double>("minLimit"));
-		maxLimitColumn.setCellValueFactory(new PropertyValueFactory<Symptom_List, Double>("maxLimit"));
-		symptomTable.setItems(symptomData);
 	}
 
 	@Override

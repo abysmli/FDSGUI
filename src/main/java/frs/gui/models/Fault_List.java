@@ -16,31 +16,35 @@ import javafx.beans.property.StringProperty;
 public class Fault_List {
 
     private final IntegerProperty faultId;
-    private final IntegerProperty componentId;
-    private final StringProperty faultType;
-    private final StringProperty faultDesc;
-    private final ObjectProperty<JSONObject> executeCommand;
+    private final IntegerProperty faultNr;
+    private final StringProperty faultName;
+    private final StringProperty faultParameter;
+    private final StringProperty faultLocation;
+    private final StringProperty symptomDesc;
+    private final ObjectProperty<JSONObject> reconfCommand;
     private final StringProperty insertDate;
 
     /**
      * Default constructor.
      */
     public Fault_List() {
-        this(0, 0, null, null, null, null);
+        this(0, 0, null, null, null, null, null, null);
     }
 
     /**
      * Constructor with some initial data.
      * 
      * @param faultId
-     * @param componentId
+     * @param faultNr
      */
-    public Fault_List(int faultId, int componentId, String faultType, String faultDesc, JSONObject executeCommand, String insertDate) {
+    public Fault_List(int faultId, int faultNr, String faultName, String faultParameter, String faultLocation, String symptomDesc, JSONObject reconfCommand, String insertDate) {
         this.faultId = new SimpleIntegerProperty(faultId);
-        this.componentId = new SimpleIntegerProperty(componentId);
-        this.faultType = new SimpleStringProperty(faultType);
-        this.faultDesc = new SimpleStringProperty(faultDesc);
-        this.executeCommand = new SimpleObjectProperty<JSONObject>(executeCommand);
+        this.faultNr = new SimpleIntegerProperty(faultNr);
+        this.faultName = new SimpleStringProperty(faultName);
+        this.faultParameter = new SimpleStringProperty(faultParameter);
+        this.faultLocation = new SimpleStringProperty(faultLocation);
+        this.symptomDesc = new SimpleStringProperty(symptomDesc);
+        this.reconfCommand = new SimpleObjectProperty<JSONObject>(reconfCommand);
         this.insertDate = new SimpleStringProperty(insertDate);
     }
 
@@ -56,52 +60,76 @@ public class Fault_List {
         return faultId;
     }
 
-    public int getcomponentId() {
-        return componentId.get();
+    public int getfaultNr() {
+        return faultNr.get();
     }
 
-    public void setcomponentId(int componentId) {
-        this.componentId.set(componentId);
+    public void setfaultNr(int faultNr) {
+        this.faultNr.set(faultNr);
     }
 
-    public IntegerProperty componentIdProperty() {
-        return componentId;
+    public IntegerProperty faultNrProperty() {
+        return faultNr;
     }
 
-    public String getfaultType() {
-        return faultType.get();
+    public String getfaultName() {
+        return faultName.get();
     }
 
-    public void setfaultType(String faultType) {
-        this.faultType.set(faultType);
+    public void setfaultName(String faultName) {
+        this.faultName.set(faultName);
     }
 
-    public StringProperty faultTypeProperty() {
-        return faultType;
+    public StringProperty faultNameProperty() {
+        return faultName;
+    }
+    
+    public String getfaultfaultParameter() {
+        return faultParameter.get();
     }
 
-    public String getfaultDesc() {
-        return faultDesc.get();
+    public void setfaultfaultParameter(String faultfaultParameter) {
+        this.faultParameter.set(faultfaultParameter);
     }
 
-    public void setfaultDesc(String faultDesc) {
-        this.faultDesc.set(faultDesc);
+    public StringProperty faultfaultParameterProperty() {
+        return faultParameter;
+    }
+    
+    public String getfaultLocation() {
+        return faultLocation.get();
     }
 
-    public StringProperty faultDescProperty() {
-        return faultDesc;
+    public void setfaultLocation(String faultLocation) {
+        this.faultLocation.set(faultLocation);
     }
 
-    public JSONObject getexecuteCommand() {
-        return executeCommand.get();
+    public StringProperty faultLocationProperty() {
+        return faultLocation;
     }
 
-    public void setexecuteCommand(JSONObject executeCommand) {
-        this.executeCommand.set(executeCommand);
+    public String getsymptomDesc() {
+        return symptomDesc.get();
     }
 
-    public ObjectProperty<JSONObject> executeCommandProperty() {
-        return executeCommand;
+    public void setsymptomDesc(String symptomDesc) {
+        this.symptomDesc.set(symptomDesc);
+    }
+
+    public StringProperty symptomDescProperty() {
+        return symptomDesc;
+    }
+
+    public JSONObject getreconfCommand() {
+        return reconfCommand.get();
+    }
+
+    public void setreconfCommand(JSONObject reconfCommand) {
+        this.reconfCommand.set(reconfCommand);
+    }
+
+    public ObjectProperty<JSONObject> reconfCommandProperty() {
+        return reconfCommand;
     }
 
     public String getinsertDate() {
