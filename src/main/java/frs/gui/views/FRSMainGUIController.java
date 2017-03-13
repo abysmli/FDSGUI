@@ -1,7 +1,7 @@
 package frs.gui.views;
 
 import frs.gui.logics.FRSCenterController;
-import frs.gui.logics.FaultDiagnoseController;
+import frs.gui.logics.RuntimeDataController;
 import frs.gui.MainApp;
 import frs.gui.models.Component_List;
 import frs.gui.models.Fault_List;
@@ -22,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -163,6 +164,9 @@ public class FRSMainGUIController implements Initializable {
 	@FXML
 	private TabPane mainTabPane, problem_diagnose_TabPane;
 
+        @FXML
+        private ScrollPane demonstration_scroll_panel;
+        
 	@FXML
 	private VBox system_controll_vbox;
 
@@ -179,7 +183,7 @@ public class FRSMainGUIController implements Initializable {
 	// Reference to the main application.
 	private MainApp application;
 	private FRSCenterController centerController;
-	private FaultDiagnoseController problemDiagnoseController;
+	private RuntimeDataController problemDiagnoseController;
 
 	private Parent runninglog_root;
 	private Stage runninglog_stage = new Stage();
@@ -199,8 +203,8 @@ public class FRSMainGUIController implements Initializable {
 				components_availability_panel, faultData, functionData, subfunctionData, mainfunctionData,
 				componentData, subsystemData);
 
-		problemDiagnoseController = new FaultDiagnoseController(this, setpoint_panel, systeminfo_panel,
-				demonstration_panel);
+		problemDiagnoseController = new RuntimeDataController(this, setpoint_panel, systeminfo_panel,
+				demonstration_panel, demonstration_scroll_panel);
 	}
 
 	private void initModelTables() {
@@ -378,7 +382,7 @@ public class FRSMainGUIController implements Initializable {
 
 	@FXML
 	private void check_faults(ActionEvent event) {
-		problemDiagnoseController.checkFault();
+		problemDiagnoseController.check();
 	}
 
 	@FXML

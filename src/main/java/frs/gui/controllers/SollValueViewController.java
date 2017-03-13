@@ -14,7 +14,7 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
-public class SetpointsViewController {
+public class SollValueViewController {
 
     AnchorPane setpoint_panel;
     boolean firstRunFlag = true;
@@ -26,7 +26,7 @@ public class SetpointsViewController {
     List<Label> controllerLabelsContainer = new ArrayList<>();
     Label process;
 
-    public SetpointsViewController(AnchorPane setpoint_panel) {
+    public SollValueViewController(AnchorPane setpoint_panel) {
         this.setpoint_panel = setpoint_panel;
     }
 
@@ -369,12 +369,12 @@ public class SetpointsViewController {
         }
     }
 
-    public void refresh(JSONArray allAbfComponents, int process_id) {
+    public void refresh(JSONArray allAbfComponents, int function_id, int task_id) {
         if (firstRunFlag) {
             generate(allAbfComponents);
             firstRunFlag = false;
         } else {
-            displayProcess(process_id);
+            displayProcess(function_id, task_id);
             int sensorCount = 0, actorCount = 0, ventilCount = 0, schalterCount = 0, MCCount = 0;
             for (int i = 0; i < allAbfComponents.length(); i++) {
                 JSONObject component = allAbfComponents.getJSONObject(i);
@@ -427,22 +427,43 @@ public class SetpointsViewController {
         }
     }
 
-    ;
-
-	private void displayProcess(int process_id) {
-        switch (process_id) {
+    private void displayProcess(int function_id, int task_id) {
+        String currentRunningInfo = new String();
+        switch (function_id) {
             case 1:
-                process.setText("Current Process: Filling & Air Pumping");
+                currentRunningInfo = "Function: Air Pumping, ";
                 break;
             case 2:
-                process.setText("Current Process: Heating");
+                currentRunningInfo = "Function: Filling, ";
                 break;
             case 3:
-                process.setText("Current Process: Pumping");
+                currentRunningInfo = "Function: Heating, ";
+                break;
+            case 4:
+                currentRunningInfo = "Function: Pumping, ";
                 break;
             default:
-                process.setText("Current Process: Stop");
+                currentRunningInfo = "Function: Stop, ";
                 break;
         }
+
+        switch (task_id) {
+            case 1:
+                currentRunningInfo += "Task: Automatic Cycling 30°C";
+                break;
+            case 2:
+                currentRunningInfo += "Task: Heat 3L,45°C Water";
+                break;
+            case 3:
+                currentRunningInfo += "Task: Pour 5L Water";
+                break;
+            case 4:
+                currentRunningInfo += "Task: Clean Pipe";
+                break;
+            default:
+                currentRunningInfo += "Task: Stop";
+                break;
+        }
+        process.setText(currentRunningInfo);
     }
 }

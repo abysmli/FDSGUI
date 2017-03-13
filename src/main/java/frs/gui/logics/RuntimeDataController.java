@@ -3,7 +3,7 @@ package frs.gui.logics;
 import frs.gui.FRSGUISetting;
 import frs.gui.FRSHttpRequestHandler;
 import frs.gui.controllers.DemonstrationController;
-import frs.gui.controllers.SetpointsViewController;
+import frs.gui.controllers.SollValueViewController;
 import frs.gui.controllers.SystemInfoViewController;
 import frs.gui.views.FRSMainGUIController;
 import java.util.Timer;
@@ -15,9 +15,10 @@ import org.json.JSONObject;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 
-public class FaultDiagnoseController {
+public class RuntimeDataController {
 
     private FRSHttpRequestHandler FDSRequester = new FRSHttpRequestHandler(FRSGUISetting.FDSAddress);
 
@@ -26,20 +27,20 @@ public class FaultDiagnoseController {
     int currentFunction;
     int currentTask;
     long timestamp;
-    JSONArray allAbfComponents, mSymptoms, mFaultProcedureInfos;
+    JSONArray allAbfComponents, mSymptoms, mAnalysisProcedureInfos;
     JSONObject componentValueContainer;
 
     SystemInfoViewController systemInfoController;
-    SetpointsViewController desiredValueController;
+    SollValueViewController sollValueController;
     DemonstrationController demonstrationController;
 
     Timer timer = new Timer();
 
-    public FaultDiagnoseController(FRSMainGUIController FDSMainGUIController, AnchorPane setpoint_panel, AnchorPane systeminfo_panel, AnchorPane demonstration_panel) {
+    public RuntimeDataController(FRSMainGUIController FDSMainGUIController, AnchorPane setpoint_panel, AnchorPane systeminfo_panel, AnchorPane demonstration_panel, ScrollPane demonstration_scroll_panel) {
         this.FDSMainGUIController = FDSMainGUIController;
         systemInfoController = new SystemInfoViewController(systeminfo_panel);
-        desiredValueController = new SetpointsViewController(setpoint_panel);
-        demonstrationController = new DemonstrationController(this, demonstration_panel);
+        sollValueController = new SollValueViewController(setpoint_panel);
+        demonstrationController = new DemonstrationController(this, demonstration_panel, demonstration_scroll_panel);
         update();
     }
 
@@ -66,7 +67,7 @@ public class FaultDiagnoseController {
         try {
             mSymptoms = FDSRequester.getSymptoms();
             componentValueContainer = FDSRequester.getLastRuntimeData();
-            mFaultProcedureInfos = FDSRequester.getAnalysisProcedure();
+            mAnalysisProcedureInfos = FDSRequester.getAnalysisProcedure();
             currentFunction = componentValueContainer.getInt("function_id");
             currentTask = componentValueContainer.getInt("task_id");
             timestamp = Long.valueOf(componentValueContainer.getString("stamp_time"));
@@ -74,9 +75,9 @@ public class FaultDiagnoseController {
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
-                    systemInfoController.refresh(allAbfComponents, currentFunction);
-                    desiredValueController.refresh(allAbfComponents, currentFunction);
-                    demonstrationController.checkFault(mFaultProcedureInfos);
+                    systemInfoController.refresh(allAbfComponents, currentFunction, currentTask);
+                    sollValueController.refresh(allAbfComponents, currentFunction, currentTask);
+                    demonstrationController.check(mAnalysisProcedureInfos);
                 }
             });
 
@@ -85,11 +86,10 @@ public class FaultDiagnoseController {
         }
     }
 
-    public void checkFault() {
+    public void check() {
         try {
-            mFaultProcedureInfos = FDSRequester.getAnalysisProcedure();
-
-            demonstrationController.checkFault(mFaultProcedureInfos);
+            mAnalysisProcedureInfos = FDSRequester.getAnalysisProcedure();
+            demonstrationController.check(mAnalysisProcedureInfos);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -97,24 +97,25 @@ public class FaultDiagnoseController {
 
     public void loadData() {
         try {
-            JSONArray metaComponentValue = FDSRequester.getRuntimeData();
-            for (int i = 0; i < metaComponentValue.length(); i++) {
-                componentValueContainer = metaComponentValue.getJSONObject(i);
-                currentFunction = componentValueContainer.getInt("process_id");
+            JSONArray metaRuntimeData = FDSRequester.getRuntimeData();
+            for (int i = 0; i < metaRuntimeData.length(); i++) {
+                componentValueContainer = metaRuntimeData.getJSONObject(i);
+                currentFunction = componentValueContainer.getInt("function_id");
+                currentTask = componentValueContainer.getInt("task_id");
                 timestamp = Long.valueOf(componentValueContainer.getString("stamp_time"));
                 allAbfComponents = componentValueContainer.getJSONArray("components");
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        systemInfoController.refresh(allAbfComponents, currentFunction);
-                        desiredValueController.refresh(allAbfComponents, currentFunction);
+                        systemInfoController.refresh(allAbfComponents, currentFunction, currentTask);
+                        sollValueController.refresh(allAbfComponents, currentFunction, currentTask);
                     }
                 });
             }
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Load Anlage Data");
             alert.setHeaderText("Anlage Running Data has been loaded");
-            alert.setContentText("Total " + metaComponentValue.length() + " sets data loaded in system!");
+            alert.setContentText("Total " + metaRuntimeData.length() + " sets data loaded in system!");
             alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
