@@ -29,7 +29,7 @@
                         <Image url="@../resources/IAS-Logo.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="206.0" layoutY="37.0" text="FRS Main GUI" AnchorPane.leftAnchor="200.0">
+                  <Label layoutX="206.0" layoutY="37.0" text="Dynamic Fault Handling and Reconfiguraiton System" AnchorPane.leftAnchor="200.0">
                      <font>
                         <Font name="Droid Sans Bold" size="30.0" />
                      </font>
@@ -62,7 +62,7 @@
                                                       <Insets left="15.0" top="20.0" />
                                                    </VBox.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" onAction="#problem_diagnose" prefHeight="40.0" prefWidth="300.0" text="Problem Diagnose" textAlignment="CENTER">
+                                                <Button mnemonicParsing="false" onAction="#problem_diagnose" prefHeight="40.0" prefWidth="300.0" text="Fault Detection" textAlignment="CENTER">
                                                    <VBox.margin>
                                                       <Insets left="15.0" top="20.0" />
                                                    </VBox.margin>
@@ -72,12 +72,12 @@
                                                       <Insets left="15.0" top="20.0" />
                                                    </VBox.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" onAction="#system_graphic" prefHeight="40.0" prefWidth="300.0" text="System Graphic">
+                                                <Button mnemonicParsing="false" onAction="#system_graphic" prefHeight="40.0" prefWidth="300.0" text="System Structure">
                                                    <VBox.margin>
                                                       <Insets left="15.0" top="20.0" />
                                                    </VBox.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" onAction="#ats_model" prefHeight="40.0" prefWidth="300.0" text="ATS-Model">
+                                                <Button mnemonicParsing="false" onAction="#ats_model" prefHeight="40.0" prefWidth="300.0" text="System Model">
                                                    <VBox.margin>
                                                       <Insets left="15.0" top="20.0" />
                                                    </VBox.margin>
@@ -99,7 +99,7 @@
                                           </VBox>
                                           <VBox fx:id="system_controll_vbox" prefHeight="757.0" prefWidth="359.0">
                                              <children>
-                                                <Label text="System Controll">
+                                                <Label text="System Control">
                                                    <font>
                                                       <Font size="20.0" />
                                                    </font>
@@ -157,7 +157,7 @@
                               </AnchorPane>
                           </content>
                         </Tab>
-                        <Tab text="Problem Diagnose">
+                        <Tab text="Fault Detection">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -273,7 +273,7 @@
                               </AnchorPane>
                           </content>
                         </Tab>
-                      <Tab text="System Graphic">
+                      <Tab text="System Structure">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -290,7 +290,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab text="ATS-Model">
+                      <Tab text="System Model">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>

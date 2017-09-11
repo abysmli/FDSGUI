@@ -32,7 +32,8 @@ public class MainApp extends Application {
                     System.exit(0);
                 }
             });
-            stage.setTitle("FRS GUI");
+//            stage.setTitle("FRS GUI");
+            stage.setTitle("Dynamic Fault Handling and Reconifguration System");
             stage.getIcons().add(new Image("/resources/icon.jpg"));
             gotoFRSMainGUI();
             stage.setResizable(false);
